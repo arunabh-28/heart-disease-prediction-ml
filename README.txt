@@ -1,124 +1,84 @@
-# ❤️ Heart Disease Prediction using Machine Learning
+# Heart Disease Prediction using Machine Learning
 
-A machine learning project that predicts the likelihood of heart disease based on patient health and clinical attributes.
+A machine learning project that predicts the likelihood of heart disease using patient health data. It compares multiple classification algorithms and deploys the selected K-Nearest Neighbors (KNN) model through a Flask web application.
 
-## 📌 Project Overview
+## Overview
 
-This project uses a supervised machine learning approach to predict whether a patient is likely to have heart disease.
+The project uses the Heart Failure Prediction dataset containing 918 patient records. It covers the complete machine learning workflow, from data exploration and preprocessing to model evaluation and web application development.
 
-The dataset contains **918 patient records** and **12 features**, including age, sex, chest pain type, resting blood pressure, cholesterol, fasting blood sugar, maximum heart rate, exercise-induced angina, and other clinical attributes.
+The trained model takes clinical attributes as input and predicts whether the patient belongs to the heart disease or no heart disease class.
 
-The project covers the complete machine learning workflow:
+## Models and Results
 
-* Data loading and exploration
-* Exploratory Data Analysis (EDA)
-* Data preprocessing
-* Handling invalid zero values
-* Categorical variable encoding
-* Feature scaling
-* Train-test splitting
-* Training multiple classification models
-* Model evaluation
-* Saving the trained model
-* Flask-based web application
+Five classification algorithms were evaluated using accuracy and F1 score.
 
-## 🧠 Machine Learning Models
+| Model | Accuracy | F1 Score |
+|---|---:|---:|
+| Logistic Regression | 87.50% | 88.78% |
+| K-Nearest Neighbors (KNN) | 88.59% | 89.86% |
+| Gaussian Naive Bayes | 86.96% | 87.88% |
+| Decision Tree | 74.46% | 75.13% |
+| Support Vector Machine (SVM) | 86.41% | 88.04% |
 
-The following classification algorithms were evaluated:
+KNN achieved the highest accuracy and F1 score among the models tested. It was selected for the Flask application based on these evaluation results.
 
-| Model                  |   Accuracy |   F1 Score |
-| ---------------------- | ---------: | ---------: |
-| Logistic Regression    |     87.50% |     88.78% |
-| K-Nearest Neighbors    | **88.59%** | **89.86%** |
-| Gaussian Naive Bayes   |     86.96% |     87.88% |
-| Decision Tree          |     74.46% |     75.13% |
-| Support Vector Machine |     86.41% |     88.04% |
+*These results reflect the evaluation performed in this project and are not evidence of clinical performance.*
 
-Based on the evaluation performed in this project, **K-Nearest Neighbors (KNN)** achieved the highest accuracy and F1 score among the tested models.
+## Features
 
-## 📊 Dataset Features
+- Exploratory data analysis and visualization
+- Data cleaning and preprocessing
+- Handling invalid zero values
+- Encoding categorical variables
+- Feature scaling using `StandardScaler`
+- Training and comparing multiple classification models
+- Evaluating models using accuracy and F1 score
+- Saving the trained model and preprocessing artifacts
+- Flask web interface for entering patient information and generating predictions
 
-### Numerical Features
+## Dataset
 
-* Age
-* Resting Blood Pressure
-* Cholesterol
-* Maximum Heart Rate
-* Oldpeak
+The dataset contains 918 records and 12 input features, along with the target column `HeartDisease`.
 
-### Categorical Features
+**Numerical features**
+- Age
+- RestingBP
+- Cholesterol
+- MaxHR
+- Oldpeak
 
-* Sex
-* Chest Pain Type
-* Fasting Blood Sugar
-* Resting ECG
-* Exercise-Induced Angina
-* ST Slope
+**Categorical and binary features**
+- Sex
+- ChestPainType
+- FastingBS
+- RestingECG
+- ExerciseAngina
+- ST_Slope
 
-### Target
+**Target:** `HeartDisease`
 
-* `HeartDisease`
+## Tech Stack
 
-## 🔧 Technologies Used
+- Python
+- Pandas and NumPy
+- Matplotlib and Seaborn
+- Scikit-learn
+- Joblib
+- Flask
+- HTML and CSS
+- Jupyter Notebook
 
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Scikit-learn
-* Joblib
-* Flask
-* HTML/CSS
-* Jupyter Notebook
-
-## 🔄 Machine Learning Workflow
-
-```text
-Dataset
-   ↓
-Data Cleaning
-   ↓
-Exploratory Data Analysis
-   ↓
-Categorical Encoding
-   ↓
-Train-Test Split
-   ↓
-Feature Scaling
-   ↓
-Model Training
-   ↓
-Model Evaluation
-   ↓
-KNN Model Selection
-   ↓
-Model Serialization
-   ↓
-Flask Web Application
-```
-
-## 🌐 Flask Web Application
-
-The project includes a Flask-based web interface where users can enter patient information and receive a prediction from the trained KNN model.
-
-The application uses:
-
-* `heart_disease_knn.pkl` — trained KNN model
-* `heart_disease_scaler.pkl` — fitted StandardScaler
-* `heart_disease_features.pkl` — feature names used during training
-
-## 📁 Project Structure
+## Project Structure
 
 ```text
 heart-disease-prediction-ml/
 │
 ├── app.py
 ├── heart.csv
+├── Heart_Disease_ML_EDA.ipynb
 ├── heart_disease_knn.pkl
 ├── heart_disease_scaler.pkl
 ├── heart_disease_features.pkl
-├── Heart_Disease_ML_EDA.ipynb
 ├── requirements.txt
 ├── README.md
 │
@@ -126,46 +86,5 @@ heart-disease-prediction-ml/
     └── index.html
 ```
 
-## ▶️ How to Run
-
-Clone the repository:
-
-```bash
-git clone https://github.com/YOUR-USERNAME/heart-disease-prediction-ml.git
-```
-
-Move into the project directory:
-
-```bash
-cd heart-disease-prediction-ml
-```
-
-Install the required libraries:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the Flask application:
-
-```bash
-python app.py
-```
-
-Open the application in your browser:
-
-```text
-http://127.0.0.1:5000
-```
-
-## ⚠️ Disclaimer
-
-This project is intended for educational and demonstration purposes only.
-
-The predictions generated by this machine learning model should **not be considered medical advice or a clinical diagnosis**.
-
-## 👨‍💻 Author
-
-**Arunabh Maurya**
-
+The `.pkl` files contain the trained KNN model, fitted scaler, and expected feature names. They are required by the Flask application and should be kept consistent with the training pipeline.
 
